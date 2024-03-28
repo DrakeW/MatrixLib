@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 #include "MatrixClass.h"
 
 namespace mtx
@@ -18,6 +19,7 @@ namespace mtx
 		}
 		return max;
 	}
+
 	template<typename t>
 	int MaxHeight(matrix<t> mtx)
 	{
@@ -32,4 +34,20 @@ namespace mtx
 		return max;
 	}
 
+	template<typename t>
+	std::string IntMatrixToString(matrix<t> mtx)
+	{
+		std::string result;
+
+		for (int x = 0; x < mtx.Data.size(); x++)
+		{
+			for (int y = 0; y < mtx.Data[x].size(); y++)
+			{
+				result.append(std::to_string(mtx.Data[x][y]));
+			}
+			result.append("\n");
+		}
+
+		return result;
+	}
 }

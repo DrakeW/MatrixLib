@@ -8,6 +8,9 @@ namespace mtx
 	template<typename t>
 	class matrix
 	{
+
+	public:
+
 		matrix(int width, int height, t filler)
 		{
 			for (int x = 0; x < width; x++)
@@ -19,11 +22,8 @@ namespace mtx
 				}
 			}
 		}
-	public:
 
 		std::vector<std::vector<t>> Data;
-		int Width;
-		int Height;
 
 		bool InsertData(int x, int y, t data);
 		bool InsertHorazontalListData(std::vector<t> data, int x, int y);

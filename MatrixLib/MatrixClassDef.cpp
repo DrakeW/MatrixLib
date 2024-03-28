@@ -18,7 +18,7 @@ namespace mtx
 	template<typename t>
 	bool matrix<t>::FillData(std::vector<std::vector<t>> data, int x, int y)
 	{
-		if ((x + data.size() < Data.size() && y + data[0].size() < MaxHeight(data) && typeid(Data) == typeid(data)))
+		if (typeid(data[0][0]) == typeid(Data[0][0]) && x + data.size() <= Data.size() && y + data[0].size() <= MaxHeight(Data))
 		{
 			for (int X = 0; X < data.size(); X++)
 			{
@@ -34,7 +34,7 @@ namespace mtx
 	template<typename t>
 	bool matrix<t>::InsertHorazontalListData(std::vector<t> data, int x, int y)
 	{
-		if (typeid(data) == typeid(Data) && x + data.size() < Data.size() && MaxHeight(Data) > y)
+		if (typeid(data[0][0]) == typeid(Data[0][0]) && x + data.size() < Data.size() && MaxHeight(Data) > y)
 		{
 			for (int X = 0; X < data.size(); X++)
 			{
