@@ -7,7 +7,7 @@ namespace mtx
 	template<typename t>
 	bool matrix<t>::InsertData(int x, int y, t data)
 	{
-		if (typeid(data) = typeid(Data[0][0]))
+		if (typeid(data) == typeid(Data[0][0]))
 		{
 			Data[x][y] = data;
 			return true;
@@ -18,7 +18,7 @@ namespace mtx
 	template<typename t>
 	bool matrix<t>::FillData(std::vector<std::vector<t>> data, int x, int y)
 	{
-		if ((x + data.size() < Data.size() && y + data[0].size() < VectorMaxHeight(data) && typeid(Data) = typeid(data)))
+		if ((x + data.size() < Data.size() && y + data[0].size() < MaxHeight(data) && typeid(Data) == typeid(data)))
 		{
 			for (int X = 0; X < data.size(); X++)
 			{
@@ -26,6 +26,19 @@ namespace mtx
 				{
 					Data[X + x][Y + y] = data[x][y];
 				}
+			}
+			return true;
+		}
+		return false;
+	}
+	template<typename t>
+	bool matrix<t>::InsertHorazontalListData(std::vector<t> data, int x, int y)
+	{
+		if (typeid(data) == typeid(Data) && x + data.size() < Data.size() && MaxHeight(Data) > y)
+		{
+			for (int X = 0; X < data.size(); X++)
+			{
+				InsertData(X + x, y, data[X]);
 			}
 			return true;
 		}
