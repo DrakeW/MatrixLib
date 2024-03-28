@@ -39,9 +39,9 @@ namespace mtx
 	{
 		std::string result;
 
-		for (int x = 0; x < mtx.Data.size(); x++)
+		for (int y = 0; y < mtx.Data[0].size(); y++)
 		{
-			for (int y = 0; y < mtx.Data[x].size(); y++)
+			for (int x = 0; x < mtx.Data.size(); x++)
 			{
 				result.append(std::to_string(mtx.Data[x][y]));
 			}
