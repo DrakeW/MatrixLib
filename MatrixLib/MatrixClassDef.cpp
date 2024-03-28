@@ -24,7 +24,7 @@ namespace mtx
 			{
 				for (int Y = 0; Y < data[X].size(); Y++)
 				{
-					Data[X + x][Y + y] = data[x][y];
+					Data[X + x][Y + y] = data[X][Y];
 				}
 			}
 			return true;
