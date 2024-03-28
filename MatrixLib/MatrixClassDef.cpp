@@ -20,7 +20,13 @@ namespace mtx
 	{
 		if ((x + data.size() < Data.size() && y + data[0].size() < VectorMaxHeight(data) && typeid(Data) = typeid(data)))
 		{
-
+			for (int X = 0; X < data.size(); X++)
+			{
+				for (int Y = 0; Y < data[X].size(); Y++)
+				{
+					Data[X + x][Y + y] = data[x][y];
+				}
+			}
 		}
 		return false;
 	}
