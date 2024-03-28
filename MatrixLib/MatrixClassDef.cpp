@@ -27,6 +27,7 @@ namespace mtx
 					Data[X + x][Y + y] = data[x][y];
 				}
 			}
+			return true;
 		}
 		return false;
 	}
