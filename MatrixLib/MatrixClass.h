@@ -1,0 +1,33 @@
+#pragma once
+
+#include <vector>
+
+namespace mtx
+{
+
+	template<typename t>
+	class matrix
+	{
+		matrix(int width, int height, t filler)
+		{
+			for (int x = 0; x < width; x++)
+			{
+				Data.push_back({});
+				for (int y = 0; y < height; y++)
+				{
+					Data[x].push_back(filler);
+				}
+			}
+		}
+	public:
+
+		std::vector<std::vector<t>> Data;
+		int Width;
+		int Height;
+
+		bool InsertData(int x, int y, t data);
+		bool FillData(std::vector<std::vector<t>> data, int x, int y);
+
+	};
+
+}
