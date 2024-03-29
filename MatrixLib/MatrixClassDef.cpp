@@ -43,4 +43,49 @@ namespace mtx
 		return false;
 	}
 
+	template<typename t>
+	bool matrix<t>::Apply(t(*func)(t), int x, int y, int w, int h)
+	{
+		if (typeid(t) == typeid(Data[x][y]) && w + x <= Data.size() && h + x <= Data[x].size())
+		{
+			for (int X = 0; X < w; X++)
+			{
+				for (int Y = 0; Y < h; Y++)
+				{
+					Data[X + x][Y + y] = func(Data[X + x][Y + y]);
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+
+	template<typename t>
+	bool matrix<t>::Apply(t(*func)(), int x, int y)
+	{
+		if (typeid(t) == typeid(Data[x][y]))
+		{
+			Data[x][y] = func();
+			return true;
+		}
+		return false;
+	}
+
+	template<typename t>
+	bool matrix<t>::Apply(t(*func)(), int x, int y, int w, int h)
+	{
+		if (typeid(t) == typeid(Data[x][y]) && w + x <= Data.size() && h + x <= Data[x].size())
+		{
+			for (int X = 0; X < w; X++)
+			{
+				for (int Y = 0; Y < h; Y++)
+				{
+					Data[X + x][Y + y] = func();
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+
 }

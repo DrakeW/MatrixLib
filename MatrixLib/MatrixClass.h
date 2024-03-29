@@ -29,6 +29,8 @@ namespace mtx
 		bool FillData(std::vector<std::vector<t>> data, int x, int y);
 		bool Apply(t(*func)(t), int x, int y);
 		bool Apply(t(*func)(t), int x, int y, int w, int h);
+		bool Apply(t(*func)(), int x, int y);
+		bool Apply(t(*func)(), int x, int y, int w, int h);
 
 	};
 
