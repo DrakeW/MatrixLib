@@ -31,21 +31,5 @@ namespace mtx
 		}
 		return false;
 	}
-	template<typename t>
-	bool matrix<t>::InsertHorazontalListData(std::vector<t> data, int x, int y)
-	{
-		if (typeid(data[0]) == typeid(Data[0][0]) && x + data.size() <= Data.size() && y <= MaxHeight(Data))
-		{
-			for (int X = 0; X < data.size(); X++)
-			{
-				if (!InsertData(X + x, y, data[X]))
-				{
-					return false;
-				}
-			}
-			return true;
-		}
-		return false;
-	}
 
 }

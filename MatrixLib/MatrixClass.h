@@ -26,7 +26,6 @@ namespace mtx
 		std::vector<std::vector<t>> Data;
 
 		bool InsertData(int x, int y, t data);
-		bool InsertHorazontalListData(std::vector<t> data, int x, int y);
 		bool FillData(std::vector<std::vector<t>> data, int x, int y);
 
 	};
