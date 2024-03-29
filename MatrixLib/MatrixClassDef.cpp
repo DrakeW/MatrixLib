@@ -32,4 +32,15 @@ namespace mtx
 		return false;
 	}
 
+	template<typename t>
+	bool matrix<t>::Apply(t(*func)(t), int x, int y)
+	{
+		if (typeid(t) = typeid(Data[x][y]))
+		{
+			Data[x][y] = func(Data[x][y]);
+			return true;
+		}
+		return false;
+	}
+
 }
