@@ -31,16 +31,90 @@ namespace mtx
 		}
 		return false;
 	}
+
 	template<typename t>
-	bool matrix<t>::InsertHorazontalListData(std::vector<t> data, int x, int y)
+	bool matrix<t>::Apply(t(*func)(t), int x, int y)
 	{
-		if (typeid(data[0]) == typeid(Data[0][0]) && x + data.size() <= Data.size() && y <= MaxHeight(Data))
+		if (typeid(t) == typeid(Data[x][y]))
 		{
-			for (int X = 0; X < data.size(); X++)
+			Data[x][y] = func(Data[x][y]);
+			return true;
+		}
+		return false;
+	}
+
+	template<typename t>
+	bool matrix<t>::Apply(t(*func)(t), int x, int y, int w, int h)
+	{
+		if (typeid(t) == typeid(Data[x][y]) && w + x <= Data.size() && h + x <= Data[x].size())
+		{
+			for (int X = 0; X < w; X++)
 			{
-				if (!InsertData(X + x, y, data[X]))
+				for (int Y = 0; Y < h; Y++)
 				{
-					return false;
+					Data[X + x][Y + y] = func(Data[X + x][Y + y]);
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+
+	template<typename t>
+	bool matrix<t>::Apply(t(*func)(), int x, int y)
+	{
+		if (typeid(t) == typeid(Data[x][y]))
+		{
+			Data[x][y] = func();
+			return true;
+		}
+		return false;
+	}
+
+	template<typename t>
+	bool matrix<t>::Apply(t(*func)(), int x, int y, int w, int h)
+	{
+		if (typeid(t) == typeid(Data[x][y]) && w + x <= Data.size() && h + x <= Data[x].size())
+		{
+			for (int X = 0; X < w; X++)
+			{
+				for (int Y = 0; Y < h; Y++)
+				{
+					Data[X + x][Y + y] = func();
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+
+	template<typename t>
+	bool matrix<t>::Apply(t(*func)(t))
+	{
+		if (typeid(t) == typeid(Data[0][0]))
+		{
+			for (int X = 0; X < Data.size(); X++)
+			{
+				for (int Y = 0; Y < Data[X].size(); Y++)
+				{
+					Data[X][Y] = func(Data[X][Y]);
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+
+	template<typename t>
+	bool matrix<t>::Apply(t(*func)())
+	{
+		if (typeid(t) == typeid(Data[0][0]))
+		{
+			for (int X = 0; X < Data.size(); X++)
+			{
+				for (int Y = 0; Y < Data[X].size(); Y++)
+				{
+					Data[X][Y] = func();
 				}
 			}
 			return true;
