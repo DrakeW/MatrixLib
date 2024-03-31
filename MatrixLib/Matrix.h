@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include <algorithm>
 #include "MatrixClass.h"
 
 namespace mtx
@@ -49,5 +50,20 @@ namespace mtx
 		}
 
 		return result;
+	}
+
+	template<typename t>
+	matrix<t> Multiply(matrix<t> first, matrix<t> second)
+	{
+		matrix<t> result(std::min(first.Data.size(), second.Data.size()), std::min(first.Data[0].size(), second.Data[0].size());
+		for (int fy = 0; fy < first.Data[0].size(); fy++)
+		{
+			for (int fx = 0; fx < first.Data[y].size(); fx++)
+			{
+
+			}
+
+		}
+		return result
 	}
 }
