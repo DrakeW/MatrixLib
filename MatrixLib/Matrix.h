@@ -64,15 +64,15 @@ namespace mtx
 	template<typename t>
 	matrix<t> Multiply(matrix<t> first, matrix<t> second)
 	{
-		matrix<t> result(std::min(first.Data.size(), second.Data.size()), std::min(first.Data[0].size(), second.Data[0].size()), 0);
+		matrix<t> result(std::min(first.Data.size(), second.Data.size()), std::min(first.Data[0].size(), second.Data[0].size());
 		for (int fy = 0; fy < first.Data[0].size(); fy++)
 		{
-			for (int fx = 0; fx < first.Data[fy].size(); fx++)
+			for (int fx = 0; fx < first.Data[y].size(); fx++)
 			{
-				return result;
+
 			}
 
 		}
-		return result;
+		return result
 	}
 }
