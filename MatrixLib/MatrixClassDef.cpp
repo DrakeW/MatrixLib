@@ -60,7 +60,7 @@ namespace mtx
 			}
 			return true;
 		}
-		mtx::ErrorFunc("Apply function failed!");
+		mtx::ErrorFunc("Apply function failed sorta!");
 		return false;
 	}
 
