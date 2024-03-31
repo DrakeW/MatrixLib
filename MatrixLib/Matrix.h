@@ -3,10 +3,19 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <iostream>
 #include "MatrixClass.h"
 
 namespace mtx
 {
+
+	void print(std::string text)
+	{
+		std::cout << text << std::endl;
+	}
+
+	void (*ErrorFunc)(std::string) = &print;
+
 	template<typename t>
 	int MaxHeight(std::vector<std::vector<t>> data)
 	{

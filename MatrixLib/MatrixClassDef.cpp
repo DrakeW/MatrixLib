@@ -12,6 +12,7 @@ namespace mtx
 			Data[x][y] = data;
 			return true;
 		}
+		ErrorFunc("InsertData function failed!");
 		return false;
 	}
 
@@ -29,6 +30,7 @@ namespace mtx
 			}
 			return true;
 		}
+		ErrorFunc("FillData function failed!");
 		return false;
 	}
 
@@ -40,6 +42,7 @@ namespace mtx
 			Data[x][y] = func(Data[x][y]);
 			return true;
 		}
+		ErrorFunc("Apply function failed!");
 		return false;
 	}
 
@@ -57,6 +60,7 @@ namespace mtx
 			}
 			return true;
 		}
+		mtx::ErrorFunc("Apply function failed!");
 		return false;
 	}
 
@@ -68,6 +72,7 @@ namespace mtx
 			Data[x][y] = func();
 			return true;
 		}
+		ErrorFunc("Apply function failed!");
 		return false;
 	}
 
@@ -85,6 +90,7 @@ namespace mtx
 			}
 			return true;
 		}
+		ErrorFunc("Apply function failed!");
 		return false;
 	}
 
@@ -102,6 +108,7 @@ namespace mtx
 			}
 			return true;
 		}
+		ErrorFunc("Apply function failed!");
 		return false;
 	}
 
@@ -119,6 +126,7 @@ namespace mtx
 			}
 			return true;
 		}
+		ErrorFunc("Apply function failed!");
 		return false;
 	}
 

@@ -11,7 +11,7 @@ int main()
 	mtx::matrix<int> Matrix(5, 5, 0);
 	std::cout << mtx::IntMatrixToString(Matrix) << std::endl;
 	std::vector<std::vector<int>> Fill = { {3, 3} };
-	if (Matrix.Apply(&ToTwo))
+	if (Matrix.Apply(&ToTwo, 1, 1, 7, 3))
 	{
 		std::cout << mtx::IntMatrixToString(Matrix) << std::endl;
 	}
