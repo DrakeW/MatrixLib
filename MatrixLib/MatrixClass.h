@@ -22,6 +22,17 @@ namespace mtx
 				}
 			}
 		}
+		matrix(int width, int height)
+		{
+			for (int x = 0; x < width; x++)
+			{
+				Data.push_back({});
+				for (int y = 0; y < height; y++)
+				{
+					Data[x].push_back({});
+				}
+			}
+		}
 
 		std::vector<std::vector<t>> Data;
 

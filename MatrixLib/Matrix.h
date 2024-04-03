@@ -66,9 +66,17 @@ namespace mtx
 		matrix<t> result(std::min(first.Data.size(), second.Data.size()), std::min(first.Data[0].size(), second.Data[0].size()));
 		for (int fy = 0; fy < first.Data[0].size(); fy++)
 		{
-			for (int fx = 0; fx < first.Data[fy].size(); fx++)
+			for (int sx = 0; sx < second.Data.size(); sx++)
 			{
-
+				t DataEntry = 0;
+				for (int sy = 0; sy < second.Data[sx].size(); sy++)
+				{
+					for (int fx = 0; fx < first.Data.size(); fx++)
+					{
+						DataEntry += first.Data[fx][fy] * second.Data[sx][sy];
+					}
+				}
+				result.Data[fy][sx] = DataEntry;
 			}
 
 		}
