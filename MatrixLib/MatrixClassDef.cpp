@@ -12,6 +12,7 @@ namespace mtx
 			Data[x][y] = data;
 			return true;
 		}
+		ErrorFunc("InsertData function failed!");
 		return false;
 	}
 
@@ -29,17 +30,19 @@ namespace mtx
 			}
 			return true;
 		}
+		ErrorFunc("FillData function failed!");
 		return false;
 	}
 
 	template<typename t>
 	bool matrix<t>::Apply(t(*func)(t), int x, int y)
 	{
-		if (typeid(t) == typeid(Data[x][y]))
+		if (typeid(t) == typeid(Data[x][y]) && x <= Data.size() && y <= Data[0].size())
 		{
 			Data[x][y] = func(Data[x][y]);
 			return true;
 		}
+		ErrorFunc("Apply function failed! (function with input, x y position)");
 		return false;
 	}
 
@@ -57,17 +60,19 @@ namespace mtx
 			}
 			return true;
 		}
+		ErrorFunc("Apply function failed! (function with input, x y position, w h fill)");
 		return false;
 	}
 
 	template<typename t>
 	bool matrix<t>::Apply(t(*func)(), int x, int y)
 	{
-		if (typeid(t) == typeid(Data[x][y]))
+		if (typeid(t) == typeid(Data[x][y]) && x <= Data.size() && y <= Data[0].size())
 		{
 			Data[x][y] = func();
 			return true;
 		}
+		ErrorFunc("Apply function failed! (function no input, x y position)");
 		return false;
 	}
 
@@ -85,6 +90,7 @@ namespace mtx
 			}
 			return true;
 		}
+		ErrorFunc("Apply function failed! (function no input, x y position, w h fill)");
 		return false;
 	}
 
@@ -102,6 +108,7 @@ namespace mtx
 			}
 			return true;
 		}
+		ErrorFunc("Apply function failed! (function with input)");
 		return false;
 	}
 
@@ -119,6 +126,7 @@ namespace mtx
 			}
 			return true;
 		}
+		ErrorFunc("Apply function failed! (function no input)");
 		return false;
 	}
 
