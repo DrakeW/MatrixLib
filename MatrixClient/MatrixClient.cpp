@@ -18,6 +18,8 @@ int main()
 
 	mtx::matrix<int> Matrix(2, 3, 0);
 	mtx::matrix<int> SecondMatrix(3, 2, 0);
+	mtx::print(IntMatrixToString(Matrix));
+	mtx::print(IntMatrixToString(SecondMatrix));
 	mtx::print(mtx::IntMatrixToString(mtx::Multiply(Matrix, SecondMatrix)));
 	
 	return 0;
