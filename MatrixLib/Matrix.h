@@ -63,23 +63,30 @@ namespace mtx
 	template<typename t>
 	matrix<t> Multiply(matrix<t> first, matrix<t> second)
 	{
-		matrix<t> result(std::min(first.Data.size(), second.Data.size()), std::min(first.Data[0].size(), second.Data[0].size()));
-		for (int fy = 0; fy < first.Data[0].size(); fy++)
+		if (first.Data.size() == second.Data[0].size())
 		{
-			for (int sx = 0; sx < second.Data.size(); sx++)
+			matrix<t> result(second.Data.size(), first.Data[0].size(), 0);
+			for (int fy = 0; fy < first.Data[0].size(); fy++)
 			{
-				t DataEntry = 0;
-				for (int sy = 0; sy < second.Data[sx].size(); sy++)
+				for (int sx = 0; sx < second.Data.size(); sx++)
 				{
-					for (int fx = 0; fx < first.Data.size(); fx++)
-					{
-						DataEntry += first.Data[fx][fy] * second.Data[sx][sy];
-					}
-				}
-				result.Data[fy][sx] = DataEntry;
-			}
+					t DataEntry = 0;
 
+					for (int e = 0; e < first.Data.size(); e++)
+					{
+						DataEntry += first.Data[e][fy] * second.Data[sx][e];
+					}
+					result.Data[sx][fy] = DataEntry;
+				}
+
+			}
+			return result;
 		}
-		return result;
+		else
+		{
+			matrix<t> result(0, 0);
+			ErrorFunc("Multiply function failed! Matrix:\n" + IntMatrixToString(first) + " Cannot be multiplied by\nMatrix:\n" + IntMatrixToString(second));
+			return result;
+		}
 	}
 }
