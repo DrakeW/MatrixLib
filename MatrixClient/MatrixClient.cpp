@@ -16,11 +16,11 @@ int main()
 {
 	mtx::ErrorFunc = &NewPrint;
 
-	mtx::matrix<int> Matrix(2, 3, 0);
-	mtx::matrix<int> SecondMatrix(3, 2, 0);
-	mtx::print(IntMatrixToString(Matrix));
-	mtx::print(IntMatrixToString(SecondMatrix));
-	mtx::print(mtx::IntMatrixToString(mtx::Multiply(Matrix, SecondMatrix)));
+	mtx::matrix<int> Matrix(2, 3, 'i');
+	mtx::matrix<int> SecondMatrix(3, 2, 'i');
+	mtx::print(MatrixToString(Matrix));
+	mtx::print(MatrixToString(SecondMatrix));
+	//mtx::print(mtx::MatrixToString(mtx::Multiply(Matrix, SecondMatrix)));
 	
 	return 0;
 }
