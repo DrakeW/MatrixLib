@@ -10,7 +10,7 @@ namespace mtx
 
 	void print(std::string input)
 	{
-		std::cout << input << std::endl;
+		std::cout << input.data() << std::endl;
 	}
 
 	void(*ErrorFunc)(std::string) = &print;
@@ -43,8 +43,8 @@ namespace mtx
 		return max;
 	}
 
-	template<typename t>
-	std::string IntMatrixToString(matrix<t> mtx)
+	
+	std::string MatrixToString(matrix<int> mtx)
 	{
 		std::string result;
 
@@ -53,6 +53,61 @@ namespace mtx
 			for (int x = 0; x < mtx.Data.size(); x++)
 			{
 				result.append(std::to_string(mtx.Data[x][y]));
+			}
+			result.append("\n");
+		}
+
+		return result;
+	}
+
+	std::string MatrixToString(matrix<float> mtx)
+	{
+		std::string result;
+
+		for (int y = 0; y < mtx.Data[0].size(); y++)
+		{
+			for (int x = 0; x < mtx.Data.size(); x++)
+			{
+				result.append(std::to_string(mtx.Data[x][y]));
+			}
+			result.append("\n");
+		}
+
+		return result;
+	}
+
+	std::string MatrixToString(matrix<bool> mtx)
+	{
+		std::string result;
+
+		for (int y = 0; y < mtx.Data[0].size(); y++)
+		{
+			for (int x = 0; x < mtx.Data.size(); x++)
+			{
+				if (mtx.Data[x][y])
+				{
+					result.append("true");
+				}
+				else
+				{
+					result.append("false");
+				}
+			}
+			result.append("\n");
+		}
+
+		return result;
+	}
+
+	std::string MatrixToString(matrix<char> mtx)
+	{
+		std::string result;
+
+		for (int y = 0; y < mtx.Data[0].size(); y++)
+		{
+			for (int x = 0; x < mtx.Data.size(); x++)
+			{
+				result.push_back((char)(mtx.Data[x][y]));
 			}
 			result.append("\n");
 		}
@@ -85,7 +140,7 @@ namespace mtx
 		else
 		{
 			matrix<t> result(1, 1, 0);
-			ErrorFunc("Multiply function failed! Matrix:\n" + IntMatrixToString(first) + " Cannot be multiplied by\nMatrix:\n" + IntMatrixToString(second));
+			ErrorFunc("Multiply function failed! Matrix:\n" + MatrixToString(first) + " Cannot be multiplied by\nMatrix:\n" + MatrixToString(second));
 			return result;
 		}
 	}
