@@ -84,7 +84,7 @@ namespace mtx
 		}
 		else
 		{
-			matrix<t> result(0, 0);
+			matrix<t> result(1, 1, 0);
 			ErrorFunc("Multiply function failed! Matrix:\n" + IntMatrixToString(first) + " Cannot be multiplied by\nMatrix:\n" + IntMatrixToString(second));
 			return result;
 		}
