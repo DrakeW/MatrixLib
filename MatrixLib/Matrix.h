@@ -7,43 +7,46 @@
 
 namespace mtx
 {
-
+	/*
+	"print" function:
+	Arguments:
+	string (input)
+	Outputs:
+	none
+	Description:
+		Prints the input to the consol using std::cout from the iostream library
+	Additional Notes:
+		Used to print errors out to the console
+	*/
 	void print(std::string input)
 	{
 		std::cout << input.data() << std::endl;
 	}
 
+	/*
+	"Errorfunc" variable
+	Type:
+		void function pointer with string input
+	Initializer:
+		Referance to "print" function
+	Description:
+		Used to access a function to print errors out to
+	Additional Notes:
+		Can be overridden for extra functionality
+	*/
 	void(*ErrorFunc)(std::string) = &print;
 
-	template<typename t>
-	int MaxHeight(std::vector<std::vector<t>> data)
-	{
-		int max = 0;
-		for (int x = 0; x < data.size(); x++)
-		{
-			if (data[x].size() > max)
-			{
-				max = data[x].size();
-			}
-		}
-		return max;
-	}
-
-	template<typename t>
-	int MaxHeight(matrix<t> mtx)
-	{
-		int max = 0;
-		for (int x = 0; x < mtx.Data.size(); x++)
-		{
-			if (mtx.Data[x].size() > max)
-			{
-				max = mtx.Data[x].size();
-			}
-		}
-		return max;
-	}
-
-	
+	/*
+		MatrixToString function
+		Arguments:
+			matrix<int> (mtx)
+		Outputs:
+			string
+		Description:
+			Converts an int matrix into a string
+		Additional Notes:
+			Used in the multiplication function for error printing
+	*/
 	std::string MatrixToString(matrix<int> mtx)
 	{
 		std::string result;
@@ -60,6 +63,17 @@ namespace mtx
 		return result;
 	}
 
+	/*
+		MatrixToString function
+		Arguments:
+			matrix<float> (mtx)
+		Outputs:
+			string
+		Description:
+			Converts a float matrix into a string
+		Additional Notes:
+			Used in the multiplication function for error printing
+	*/
 	std::string MatrixToString(matrix<float> mtx)
 	{
 		std::string result;
@@ -76,6 +90,18 @@ namespace mtx
 		return result;
 	}
 
+	/*
+		MatrixToString function
+		Arguments:
+			matrix<bool> (mtx)
+		Outputs:
+			string
+		Description:
+			Converts a boolean matrix into a string
+		Additional Notes:
+			Used in the multiplication function for error printing
+			Returned string is in true or false
+	*/
 	std::string MatrixToString(matrix<bool> mtx)
 	{
 		std::string result;
@@ -99,6 +125,17 @@ namespace mtx
 		return result;
 	}
 
+	/*
+		MatrixToString function
+		Arguments:
+			matrix<char> (mtx)
+		Outputs:
+			string
+		Description:
+			Converts a char matrix into a string
+		Additional Notes:
+			Used in the multiplication function for error printing
+	*/
 	std::string MatrixToString(matrix<char> mtx)
 	{
 		std::string result;
@@ -115,6 +152,18 @@ namespace mtx
 		return result;
 	}
 
+	/*
+	"Multiply" function
+	Arguments:
+		matrix<t> first, matrix<t> second
+	Outputs:
+		matrix<t> (x = first.Data.size(), y = second.Data.size())
+	Description:
+		Multiplies the first matrix by the second matrix (first * second)
+	Additional Notes:
+		Will return a matrix of type t with a width and height of 1 filled with 0 on fail
+		Will print an error message on fail
+	*/
 	template<typename t>
 	matrix<t> Multiply(matrix<t> first, matrix<t> second)
 	{

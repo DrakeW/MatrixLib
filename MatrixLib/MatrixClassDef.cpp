@@ -19,7 +19,7 @@ namespace mtx
 	template<typename t>
 	bool matrix<t>::FillData(std::vector<std::vector<t>> data, int x, int y)
 	{
-		if (typeid(data[0][0]) == typeid(Data[0][0]) && x + data.size() <= Data.size() && y + data[0].size() <= MaxHeight(Data))
+		if (typeid(data[0][0]) == typeid(Data[0][0]) && x + data.size() <= Data.size() && y + data[0].size() <= Data[0].size())
 		{
 			for (int X = 0; X < data.size(); X++)
 			{
