@@ -11,6 +11,18 @@ namespace mtx
 
 	public:
 
+		/*
+		matrix class constructor
+		Arguments:
+			int (width), int (height), t (filler
+		Outputs:
+			None
+		Description:
+			Creates the matrix with a width of width and a height of height
+			Fills the whole matrix with filler
+		Additional Notes:
+			None
+		*/
 		matrix(int width, int height, t filler)
 		{
 			for (int x = 0; x < width; x++)
@@ -22,6 +34,19 @@ namespace mtx
 				}
 			}
 		}
+
+		/*
+		matrix class constructor
+		Arguments;
+			int (width), int (height)
+		Outputs:
+			None
+		Description
+			Creates a matrix with a width of width and a height of height
+			Does not give it any value
+		Additional Notes:
+			Alocates the space for the matrix, but no data is entered
+		*/
 		matrix(int width, int height)
 		{
 			for (int x = 0; x < width; x++)
@@ -34,6 +59,18 @@ namespace mtx
 			}
 		}
 
+		/*
+		"Data" variable
+		Type:
+			std::vector<std::vector<t>>
+		Initializer:
+			None - set in constructor
+		Description:
+			Two dimensional vector of type t
+			Holds the data for the matrix
+		Additional Notes:
+			Starts with no data or value, as this is done in the constructor
+		*/
 		std::vector<std::vector<t>> Data;
 
 		/*

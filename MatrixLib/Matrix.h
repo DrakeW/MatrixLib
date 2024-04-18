@@ -157,7 +157,7 @@ namespace mtx
 	Arguments:
 		matrix<t> first, matrix<t> second
 	Outputs:
-		matrix<t> (x = first.Data.size(), y = second.Data.size())
+		matrix<t> (x = first.Data.size(), y = second.Data[0].size())
 	Description:
 		Multiplies the first matrix by the second matrix (first * second)
 	Additional Notes:
