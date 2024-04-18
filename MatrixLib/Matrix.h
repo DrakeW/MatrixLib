@@ -14,7 +14,7 @@ namespace mtx
 	Outputs:
 	none
 	Description:
-		Prints the input to the consol using std::cout from the iostream library
+		Prints the input to the console using std::cout from the iostream library
 	Additional Notes:
 		Used to print errors out to the console
 	*/
