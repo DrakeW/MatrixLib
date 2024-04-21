@@ -2,11 +2,17 @@
 #include <string>
 #include "MatrixClassDef.cpp"
 
+int ToTwo()
+{
+	return 2;
+}
+
 int main()
 {
 
-	mtx::matrix<bool> Matrix(2, 3, true);
-	mtx::matrix<bool> SecondMatrix(3, 2, true);
+	mtx::matrix<int> Matrix(2, 3, 1);
+	mtx::matrix<int> SecondMatrix(3, 2, 1);
+	Matrix.Apply(&ToTwo);
 	mtx::print(MatrixToString(Matrix));
 	mtx::print(MatrixToString(SecondMatrix));
 	mtx::print(mtx::MatrixToString(mtx::Multiply(Matrix, SecondMatrix)));

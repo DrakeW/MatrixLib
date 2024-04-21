@@ -229,6 +229,6 @@ namespace mtx
 		}
 		ErrorFunc("Apply function failed! (function no input)");
 		return false;
-	}
+	} 
 
 }
