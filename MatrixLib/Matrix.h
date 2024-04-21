@@ -194,3 +194,11 @@ namespace mtx
 		}
 	}
 }
+
+namespace mtxai
+{
+	void NeurralNetSetup(std::vector<mtx::matrix<float>>* weights, std::vector<mtx::matrix<float>>* nodes)
+	{
+
+	}
+}
