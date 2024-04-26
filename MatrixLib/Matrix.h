@@ -189,8 +189,20 @@ namespace mtx
 		else
 		{
 			matrix<t> result(1, 1, 0);
-			ErrorFunc("Multiply function failed! Matrix:\n" + MatrixToString(first) + " Cannot be multiplied by\nMatrix:\n" + MatrixToString(second));
+			ErrorFunc("Multiply function failed! Matrix:\n" + MatrixToString(first) + "Cannot be multiplied by\nMatrix:\n" + MatrixToString(second));
 			return result;
+		}
+	}
+}
+
+namespace mtxai
+{
+	void NeurralNetSetup(std::vector<mtx::matrix<float>> *weights, std::vector<mtx::matrix<float>> *nodes, std::vector<int> net)
+	{
+		for (int l = 0; l < net.size(); l++)
+		{
+			mtx::matrix<float> NodeInsert(0, net[l]);
+			nodes->push_back(NodeInsert);
 		}
 	}
 }
