@@ -5,6 +5,42 @@
 namespace mtx
 {
 
+	/*
+	"matrix" class
+	Constructors:
+		1:
+		matrix class constructor
+		Arguments:
+			int (width), int (height), t (filler
+		Outputs:
+			None
+		Description:
+			Creates the matrix with a width of width and a height of height
+			Fills the whole matrix with filler
+		Additional Notes:
+			None
+		2:
+		matrix class constructor
+		Arguments;
+			int (width), int (height)
+		Outputs:
+			None
+		Description
+			Creates a matrix with a width of width and a height of height
+			Does not give it any value
+		Additional Notes:
+			Alocates the space for the matrix, but no data is entered
+	Functions:
+		Apply
+		InsertData
+		FillData
+	Variables:
+		std::vector<std::vector<t>> Data
+	Description:
+		A basic 2D matrix
+	Additional Notes:
+		None
+	*/
 	template<typename t>
 	class matrix
 	{
@@ -181,7 +217,6 @@ namespace mtx
 			Inputed function return value must be the same as matrix data type
 		*/
 		bool Apply(t(*func)(), int x, int y, int w, int h);
-
 	};
 
 }
