@@ -10,12 +10,13 @@ int ToTwo()
 int main()
 {
 
-	mtx::matrix<int> Matrix(2, 3, 1);
-	mtx::matrix<int> SecondMatrix(3, 2, 1);
-	Matrix.Apply(&ToTwo);
-	mtx::print(MatrixToString(Matrix));
-	mtx::print(MatrixToString(SecondMatrix));
-	mtx::print(mtx::MatrixToString(mtx::Multiply(Matrix, SecondMatrix)));
+	std::vector<mtx::matrix<float>> Tweights;
+	std::vector<mtx::matrix<float>> Tnodes;
+	std::vector<int> tnet = { 3, 3, 3 };
+
+	mtxai::NeurralNetSetup(&Tweights, &Tnodes, tnet);
+
+	for(int i = 0; i < Tweights.size; i++ )
 	
 	return 0;
 }
