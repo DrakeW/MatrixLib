@@ -201,8 +201,13 @@ namespace mtxai
 	{
 		for (int l = 0; l < net.size(); l++)
 		{
-			mtx::matrix<float> NodeInsert(0, net[l]);
+			mtx::matrix<float> NodeInsert(1, net[l]);
 			nodes->push_back(NodeInsert);
+			if (l < net.size() - 1)
+			{
+				mtx::matrix<float> WeightsInsert(net[l + 1], net[l]);
+				weights->push_back(WeightsInsert);
+			}
 		}
 	}
 }
