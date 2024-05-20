@@ -23,7 +23,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\OneDrive\Documents\GitHub\MatrixLib\MatrixLib\MatrixClassDef.cpp">
+    <ClCompile Include="MatrixClassDef.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
