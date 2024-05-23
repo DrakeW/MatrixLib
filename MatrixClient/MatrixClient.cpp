@@ -16,7 +16,10 @@ int main()
 
 	mtxai::NeurralNetSetup(&Tweights, &Tnodes, tnet);
 
-	for(int i = 0; i < Tweights.size; i++ )
+	for (int i = 0; i < Tnodes.size(); i++)
+	{
+		std::cout << mtx::MatrixToString(Tnodes[i]) << std::endl;
+	}
 	
 	return 0;
 }
