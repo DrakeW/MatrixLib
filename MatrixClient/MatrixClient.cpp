@@ -10,16 +10,26 @@ int ToTwo()
 int main()
 {
 
+	srand(time(0));
+
 	std::vector<mtx::matrix<float>> Tweights;
 	std::vector<mtx::matrix<float>> Tnodes;
-	std::vector<int> tnet = { 3, 3, 3 };
+	std::vector<int> Tnet = { 3, 4, 3 };
 
-	mtxai::NeurralNetSetup(&Tweights, &Tnodes, tnet);
+	mtxai::NeurralNetSetup(&Tweights, &Tnodes, Tnet);
 
-	for (int i = 0; i < Tnodes.size(); i++)
+	std::vector<float> Tinput = { 0.5, 0.5, 0.3};
+
+	mtxai::NeurralNetTest(Tinput, Tweights, &Tnodes);
+
+	std::cout << mtxai::WeightInitFunc() << std::endl;
+
+	for (int w = 0; w < Tweights.size(); w++)
 	{
-		std::cout << mtx::MatrixToString(Tnodes[i]) << std::endl;
+		std::cout << mtx::MatrixToString(Tweights[w]) << std::endl;
 	}
+
+	std::cout << mtx::MatrixToString(Tnodes[Tnodes.size() - 1]) << std::endl;
 	
 	return 0;
 }

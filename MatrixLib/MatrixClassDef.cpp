@@ -115,7 +115,6 @@ namespace mtx
 		return false;
 	}
 
-
 	/*
 	Apply function
 	Arguments:
