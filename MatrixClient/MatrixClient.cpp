@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "MatrixClassDef.cpp"
+#include "MatrixInclude.h"
 
 int ToTwo()
 {
@@ -9,8 +9,7 @@ int ToTwo()
 
 int main()
 {
-
-	srand(time(0));
+	srand(rand() ^ time(NULL));
 
 	std::vector<mtx::matrix<float>> Tweights;
 	std::vector<mtx::matrix<float>> Tnodes;
@@ -21,8 +20,6 @@ int main()
 	std::vector<float> Tinput = { 0.5, 0.5, 0.3};
 
 	mtxai::NeurralNetTest(Tinput, Tweights, &Tnodes);
-
-	std::cout << mtxai::WeightInitFunc() << std::endl;
 
 	for (int w = 0; w < Tweights.size(); w++)
 	{

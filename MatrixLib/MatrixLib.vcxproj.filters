@@ -21,6 +21,12 @@
     <ClInclude Include="MatrixClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NeurralNetwork.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixInclude.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MatrixClassDef.cpp">
