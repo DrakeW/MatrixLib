@@ -9,9 +9,9 @@ namespace mtxai
 		return rand() / (float)RAND_MAX;
 	}
 
-	float Backpropagate(float error, float oldWeight)
+	float Backpropagate(float error, float oldWeight, float nodeOutput)
 	{
-		return 0.0;
+		return;
 	}
 
 	float(*WeightInitFunc)() = &WeightInitializer;
@@ -31,7 +31,7 @@ namespace mtxai
 		}
 	}
 
-	void NeurralNetTest(std::vector<float> input, std::vector<mtx::matrix<float>> weights, std::vector<mtx::matrix<float>>* nodes)
+	void NeurralNetTest(std::vector<float> input, std::vector<mtx::matrix<float>> weights, std::vector<mtx::matrix<float>> *nodes)
 	{
 		for (int i = 0; i < input.size(); i++)
 		{
@@ -43,9 +43,11 @@ namespace mtxai
 			(*nodes)[t] = mtx::Multiply((*nodes)[t - 1], weights[t - 1]);
 		}
 	}
-	void NeurralNetTrain(std::vector<float> input, std::vector<mtx::matrix<float>>* weights, std::vector < mtx::matrix<float>>* nodes)
+	void NeurralNetTrain(std::vector<float> input, std::vector<mtx::matrix<float>> *weights, std::vector<mtx::matrix<float>> *nodes)
 	{
 		NeurralNetTest(input, *weights, nodes);
+		std::vector<mtx::matrix<float>> NodeErrors = *nodes;
+
 
 
 	}
