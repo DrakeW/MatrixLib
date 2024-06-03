@@ -13,13 +13,15 @@ int main()
 
 	std::vector<mtx::matrix<float>> Tweights;
 	std::vector<mtx::matrix<float>> Tnodes;
-	std::vector<int> Tnet = { 3, 4, 3 };
+	std::vector<int> Tnet = { 3, 5, 2 };
 
 	mtxai::NeurralNetSetup(&Tweights, &Tnodes, Tnet);
 
 	std::vector<float> Tinput = { 0.5, 0.5, 0.3};
+	std::vector<float> Ttarget = { 0, 1, };
 
 	mtxai::NeurralNetTest(Tinput, Tweights, &Tnodes);
+	mtxai::NeurralNetTrain(Tinput, Ttarget, &Tweights, &Tnodes);
 
 	for (int w = 0; w < Tweights.size(); w++)
 	{
