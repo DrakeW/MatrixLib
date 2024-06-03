@@ -80,6 +80,12 @@ namespace mtxai
 					}
 				}
 			}
+
+			for (int l = (*nodes).size() - 1; l >= 0; l--)
+			{
+
+			}
+
 		}
 	}
 }
