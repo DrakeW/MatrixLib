@@ -6,7 +6,7 @@
 namespace mtxai
 {
 
-	float LearningRate = 0.2;
+	float LearningRate = 0.001;
 
 	float WeightInitializer()
 	{
@@ -23,9 +23,9 @@ namespace mtxai
 		return ActivationFunc(input) * (1 - ActivationFunc(input));
 	}
 
-	float Backpropagate(float weight, float error, float nodeOutput)
+	void Backpropagate(float *weight, float error, float nodeOutput)
 	{
-		return weight - LearningRate * -error * ActivationFuncDer(nodeOutput);
+		*weight -= LearningRate * error * ActivationFuncDer(nodeOutput);
 	}
 
 	float(*WeightInitFunc)() = &WeightInitializer;
@@ -58,6 +58,7 @@ namespace mtxai
 			(*nodes)[t].Apply(&ActivationFunc);
 		}
 	}
+
 	void NeurralNetTrain(std::vector<float> input, std::vector<float> targets, std::vector<mtx::matrix<float>> *weights, std::vector<mtx::matrix<float>> *nodes)
 	{
 		NeurralNetTest(input, *weights, nodes);
@@ -102,7 +103,7 @@ namespace mtxai
 
 			for (int i = 0; i < (*nodes)[(*nodes).size() - 1].Data.size(); i++)
 			{
-				NodeErrors[NodeErrors.size() - 1].Data[i][0] = 2 * ((*nodes)[(*nodes).size() - 1].Data[i][0] - targets[i]);
+				NodeErrors[NodeErrors.size() - 1].Data[i][0] = -2 * ((*nodes)[(*nodes).size() - 1].Data[i][0] - targets[i]);
 			}
 
 			/*
@@ -117,7 +118,7 @@ namespace mtxai
 				{
 					for (int g = 0; g < (*nodes)[l + 1].Data.size(); g++)
 					{
-						Backpropagate((*weights)[l].Data[g][n], NodeErrors[l + 1].Data[g][0], (*nodes)[l].Data[n][0]);
+						Backpropagate(&(*weights)[l].Data[g][n], NodeErrors[l + 1].Data[g][0], (*nodes)[l].Data[n][0]);
 					}
 				}
 			}
