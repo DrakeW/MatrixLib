@@ -6,7 +6,7 @@
 namespace mtxai
 {
 
-	float LearningRate = 0.001;
+	float LearningRate = 0.01;
 
 	float WeightInitializer()
 	{
@@ -72,7 +72,7 @@ namespace mtxai
 
 		for (int i = 0; i < (*nodes)[(*nodes).size() - 1].Data.size(); i++)
 		{
-			NodeErrors[NodeErrors.size() - 1].Data[i][0] = pow((*nodes)[(*nodes).size() - 1].Data[i][0] - targets[i], 2);
+			NodeErrors[NodeErrors.size() - 1].Data[i][0] = pow(targets[i] - (*nodes)[(*nodes).size() - 1].Data[i][0], 2);
 		}
 
 		/*
@@ -103,7 +103,7 @@ namespace mtxai
 
 			for (int i = 0; i < (*nodes)[(*nodes).size() - 1].Data.size(); i++)
 			{
-				NodeErrors[NodeErrors.size() - 1].Data[i][0] = -2 * ((*nodes)[(*nodes).size() - 1].Data[i][0] - targets[i]);
+				NodeErrors[NodeErrors.size() - 1].Data[i][0] = -2 * (targets[i] - (*nodes)[(*nodes).size() - 1].Data[i][0]);
 			}
 
 			/*

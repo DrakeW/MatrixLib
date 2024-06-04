@@ -13,18 +13,22 @@ int main()
 
 	std::vector<mtx::matrix<float>> Tweights;
 	std::vector<mtx::matrix<float>> Tnodes;
-	std::vector<int> Tnet = { 3, 6, 2 };
+	std::vector<int> Tnet = { 3, 60, 50, 3};
 
 	mtxai::NeurralNetSetup(&Tweights, &Tnodes, Tnet);
 
-	std::vector<float> Tinput = { 0.5, 0.5, 0.3};
-	std::vector<float> Ttarget = { 0, 1, };
+	std::vector<float> Tinput = { 10, 20, 15};
+	std::vector<float> Ttarget = { 0, 0, 1};
+
+	std::vector<float> Tinput2 = { 20, 80, 50 };
+	std::vector<float> Ttarget2 = { 1, 0, 0 };
 
 	mtxai::NeurralNetTest(Tinput, Tweights, &Tnodes);
 
-	for (int e = 0; e < 50000; e++)
+	for (int e = 0; e < 5000; e++)
 	{
 		mtxai::NeurralNetTrain(Tinput, Ttarget, &Tweights, &Tnodes);
+		mtxai::NeurralNetTrain(Tinput2, Ttarget2, &Tweights, &Tnodes);
 	}
 
 	mtxai::NeurralNetTest(Tinput, Tweights, &Tnodes);
@@ -33,6 +37,10 @@ int main()
 	{
 		std::cout << mtx::MatrixToString(Tweights[w]) << std::endl;
 	}
+
+	std::cout << mtx::MatrixToString(Tnodes[Tnodes.size() - 1]) << std::endl;
+
+	mtxai::NeurralNetTest(Tinput2, Tweights, &Tnodes);
 
 	std::cout << mtx::MatrixToString(Tnodes[Tnodes.size() - 1]) << std::endl;
 	
