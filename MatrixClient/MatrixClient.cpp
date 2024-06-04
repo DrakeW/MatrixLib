@@ -18,14 +18,14 @@ int main()
 	mtxai::NeurralNetSetup(&Tweights, &Tnodes, Tnet);
 
 	std::vector<float> Tinput = { 10, 20, 15};
-	std::vector<float> Ttarget = { 0, 0, 1};
+	std::vector<float> Ttarget = { 0, 1, 0};
 
 	std::vector<float> Tinput2 = { 20, 80, 50 };
 	std::vector<float> Ttarget2 = { 1, 0, 0 };
 
 	mtxai::NeurralNetTest(Tinput, Tweights, &Tnodes);
 
-	for (int e = 0; e < 5000; e++)
+	for (int e = 0; e < 50000; e++)
 	{
 		mtxai::NeurralNetTrain(Tinput, Ttarget, &Tweights, &Tnodes);
 		mtxai::NeurralNetTrain(Tinput2, Ttarget2, &Tweights, &Tnodes);
