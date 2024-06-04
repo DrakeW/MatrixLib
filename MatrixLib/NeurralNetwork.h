@@ -25,7 +25,7 @@ namespace mtxai
 
 	float Backpropagate(float weight, float error, float nodeOutput)
 	{
-		return weight - LearningRate * error * ActivationFuncDer(nodeOutput);
+		return weight - LearningRate * -error * ActivationFuncDer(nodeOutput);
 	}
 
 	float(*WeightInitFunc)() = &WeightInitializer;
@@ -55,37 +55,48 @@ namespace mtxai
 		for (int t = 1; t < nodes->size(); t++)
 		{
 			(*nodes)[t] = mtx::Multiply((*nodes)[t - 1], weights[t - 1]);
+			(*nodes)[t].Apply(&ActivationFunc);
 		}
 	}
 	void NeurralNetTrain(std::vector<float> input, std::vector<float> targets, std::vector<mtx::matrix<float>> *weights, std::vector<mtx::matrix<float>> *nodes)
 	{
 		NeurralNetTest(input, *weights, nodes);
-		std::vector<mtx::matrix<float>> NodeErrors = *nodes;
+		auto NodeErrors = *nodes;
 		
 		for (int i = 0; i < (*nodes)[(*nodes).size() - 1].Data.size(); i++)
 		{
-			(*nodes)[(*nodes).size() - 1].Data[i][0] = pow((*nodes)[(*nodes).size() - 1].Data[i][0] - targets[i], 2);
+			NodeErrors[NodeErrors.size() - 1].Data[i][0] = pow((*nodes)[(*nodes).size() - 1].Data[i][0] - targets[i], 2);
 		}
 
-		if (!((*nodes)[(*nodes).size() - 1].Data.size() - targets.size()))
+		if (!(NodeErrors[NodeErrors.size() - 1].Data.size() - targets.size()))
 		{
-			for (int l = (*nodes).size() - 2; l >= 0; l--)
+			for (int l = NodeErrors.size() - 2; l >= 0; l--)
 			{
-				for (int n = 0; n < (*nodes)[l].Data.size(); n++)
+				for (int n = 0; n < NodeErrors[l].Data.size(); n++)
 				{
 					(*nodes)[l].Data[n][0] = 0;
-					for (int g = 0; g < (*nodes)[l + 1].Data.size(); g++)
+					for (int g = 0; g < NodeErrors[l + 1].Data.size(); g++)
 					{
-						(*nodes)[l].Data[n][0] += (*nodes)[l + 1].Data[g][0] * (*weights)[l].Data[g][n];
+						NodeErrors[l].Data[n][0] += (*nodes)[l + 1].Data[g][0] * (*weights)[l].Data[g][n];
 					}
 				}
 			}
 
-			for (int l = (*nodes).size() - 1; l >= 0; l--)
+			for (int i = 0; i < (*nodes)[(*nodes).size() - 1].Data.size(); i++)
 			{
-
+				NodeErrors[NodeErrors.size() - 1].Data[i][0] = 2 * ((*nodes)[(*nodes).size() - 1].Data[i][0] - targets[i]);
 			}
 
+			for (int l = (*nodes).size() - 2; l >= 0; l--)
+			{
+				for (int n = 0; n < (*nodes)[l].Data.size(); n++)
+				{
+					for (int g = 0; g < (*nodes)[l + 1].Data.size(); g++)
+					{
+						Backpropagate((*weights)[l].Data[g][n], NodeErrors[l + 1].Data[g][0], (*nodes)[l].Data[n][0]);
+					}
+				}
+			}
 		}
 	}
 }
