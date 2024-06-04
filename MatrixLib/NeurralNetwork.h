@@ -63,10 +63,22 @@ namespace mtxai
 		NeurralNetTest(input, *weights, nodes);
 		auto NodeErrors = *nodes;
 		
+		/*
+		
+		Setting the initial errors for the last layer, which are then used to backpropagate
+		
+		*/
+
 		for (int i = 0; i < (*nodes)[(*nodes).size() - 1].Data.size(); i++)
 		{
 			NodeErrors[NodeErrors.size() - 1].Data[i][0] = pow((*nodes)[(*nodes).size() - 1].Data[i][0] - targets[i], 2);
 		}
+
+		/*
+		
+		Backpropagating the errors to have an error for each node
+		
+		*/
 
 		if (!(NodeErrors[NodeErrors.size() - 1].Data.size() - targets.size()))
 		{
@@ -82,11 +94,23 @@ namespace mtxai
 				}
 			}
 
+			/*
+			
+			Setting the NodeErrors to their derivatives to help with backprop
+			
+			*/
+
 			for (int i = 0; i < (*nodes)[(*nodes).size() - 1].Data.size(); i++)
 			{
 				NodeErrors[NodeErrors.size() - 1].Data[i][0] = 2 * ((*nodes)[(*nodes).size() - 1].Data[i][0] - targets[i]);
 			}
 
+			/*
+			
+			Backpropagating through the weights to update them
+			
+			*/
+			
 			for (int l = (*nodes).size() - 2; l >= 0; l--)
 			{
 				for (int n = 0; n < (*nodes)[l].Data.size(); n++)
