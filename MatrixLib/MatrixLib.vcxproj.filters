@@ -21,7 +21,7 @@
     <ClInclude Include="MatrixClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NeurralNetwork.h">
+    <ClInclude Include="NeuralNetwork.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MatrixInclude.h">

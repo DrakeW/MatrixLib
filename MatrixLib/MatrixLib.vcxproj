@@ -134,7 +134,7 @@
     <ClInclude Include="MatrixClass.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MatrixInclude.h" />
-    <ClInclude Include="NeurralNetwork.h" />
+    <ClInclude Include="NeuralNetwork.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MatrixClassDef.cpp" />

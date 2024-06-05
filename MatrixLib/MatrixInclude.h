@@ -1,4 +1,4 @@
 #pragma once
 
-#include "NeurralNetwork.h"
+#include "NeuralNetwork.h"
 #include "MatrixClassDef.cpp"
