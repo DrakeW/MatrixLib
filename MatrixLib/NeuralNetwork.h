@@ -91,7 +91,7 @@ namespace mtxai
 				{
 					NodeErrors
 				}
-				//(*nodes)[l].Apply(&ActivationFunc);
+				(*nodes)[l].Apply(&ActivationFunc);
 			}
 
 			/*
