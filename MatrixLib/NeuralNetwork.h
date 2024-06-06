@@ -96,7 +96,7 @@ namespace mtxai
 						NodeErrors[l].Data[n][0] *= NodeErrors[l + 1].Data[g][0];
 					}
 				}
-				//(*nodes)[l].Apply(&ActivationFunc);
+				(*nodes)[l].Apply(&ActivationFunc);
 			}
 
 			/*
