@@ -25,7 +25,7 @@ namespace mtxai
 
 	void Backpropagate(float *weight, float error, float nodeOutput)
 	{
-		*weight -= LearningRate * error * ActivationFuncDer(nodeOutput);
+		*weight -= LearningRate * error * ActivationFuncDer(nodeOutput) * nodeOutput;
 	}
 
 	float(*WeightInitFunc)() = &WeightInitializer;
@@ -59,12 +59,12 @@ namespace mtxai
 		}
 	}
 
-	void NeuralNetTrain(std::vector<float> input, std::vector<float> targets, std::vector<mtx::matrix<float>> *weights, std::vector<mtx::matrix<float>> *nodes)
+	void NeuralNetTrain(std::vector<float> input, mtx::matrix<float> targets, std::vector<mtx::matrix<float>> *weights, std::vector<mtx::matrix<float>> *nodes)
 	{
 		NeuralNetTest(input, *weights, nodes);
-		auto NodeErrors = *nodes;
+		mtx::matrix<float> NodeErrors((*nodes).size(), 1);
 
-		if (!(NodeErrors[NodeErrors.size() - 1].Data.size() - targets.size()))
+		if (!((*nodes)[(*nodes).size() - 1].Data.size() - targets.Data.size()))
 		{
 
 			/*
@@ -75,7 +75,7 @@ namespace mtxai
 
 			for (int i = 0; i < (*nodes)[(*nodes).size() - 1].Data.size(); i++)
 			{
-				NodeErrors[NodeErrors.size() - 1].Data[i][0] = pow(targets[i] - (*nodes)[(*nodes).size() - 1].Data[i][0], 2);
+				NodeErrors.Data[i][0] = mtx::DirectSubtract(targets, *nodes)
 			}
 
 
@@ -89,12 +89,7 @@ namespace mtxai
 			{
 				for (int n = 0; n < NodeErrors[l].Data.size(); n++)
 				{
-					(*nodes)[l].Data[n][0] = 0;
-					for (int g = 0; g < NodeErrors[l + 1].Data.size(); g++)
-					{
-						NodeErrors[l].Data[n][0] += (*nodes)[l + 1].Data[g][0] * (*weights)[l].Data[g][n];
-						NodeErrors[l].Data[n][0] *= NodeErrors[l + 1].Data[g][0];
-					}
+					NodeErrors
 				}
 				//(*nodes)[l].Apply(&ActivationFunc);
 			}
@@ -122,7 +117,7 @@ namespace mtxai
 				{
 					for (int g = 0; g < (*nodes)[l + 1].Data.size(); g++)
 					{
-						Backpropagate(&(*weights)[l].Data[g][n], NodeErrors[l + 1].Data[g][0], (*nodes)[l].Data[n][0]);
+						Backpropagate(&(*weights)[l].Data[g][n], NodeErrors[l + 1].Data[g][0], (*nodes)[l + 1].Data[g][0]);
 					}
 				}
 			}

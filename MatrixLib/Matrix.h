@@ -194,4 +194,38 @@ namespace mtx
 			return result;
 		}
 	}
+
+	template<typename t>
+	matrix<t> DirectMultiply(matrix<t> first, matrix<t> second)
+	{
+		matrix<t> Result(first.Data.size(), first.Data[0].size());
+		if (first.Data.size() == second.Data.size() && first.Data.[0].size() == second.Data[0].size())
+		{
+			for (int x = 0; x < first.Data.size(); x++)
+			{
+				for (int y = 0; y < first.Data[0].size(); y++)
+				{
+					result[x][y] = first.Data[x][y] * second.Data[x][y];
+				}
+			}
+		}
+		return result;
+	}
+
+	template<typename t>
+	matrix<t> DirectSubtract(matrix<t> first, matrix<t> second)
+	{
+		matrix<t> Result(first.Data.size(), first.Data[0].size());
+		if (first.Data.size() == second.Data.size() && first.Data.[0].size() == second.Data[0].size())
+		{
+			for (int x = 0; x < first.Data.size(); x++)
+			{
+				for (int y = 0; y < first.Data[0].size(); y++)
+				{
+					result[x][y] = first.Data[x][y] - second.Data[x][y];
+				}
+			}
+		}
+		return result;
+	}
 }
