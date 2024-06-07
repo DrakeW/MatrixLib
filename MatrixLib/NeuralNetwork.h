@@ -73,10 +73,7 @@ namespace mtxai
 
 			*/
 
-			for (int i = 0; i < (*nodes)[(*nodes).size() - 1].Data.size(); i++)
-			{
-				NodeErrors.Data[i][0] = mtx::DirectSubtract(targets, *nodes)
-			}
+			NodeErrors.Data[NodeErrors.Data.size() - 1][0] = mtx::Sum(mtx::DirectSubtract(targets, (*nodes)[NodeErrors.Data.size() - 1]));
 
 
 			/*
@@ -85,7 +82,7 @@ namespace mtxai
 
 			*/
 
-			for (int l = NodeErrors.size() - 2; l >= 0; l--)
+			for (int l = NodeErrors.Data.size() - 2; l >= 0; l--)
 			{
 				for (int n = 0; n < NodeErrors[l].Data.size(); n++)
 				{

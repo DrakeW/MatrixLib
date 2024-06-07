@@ -228,4 +228,18 @@ namespace mtx
 		}
 		return result;
 	}
+
+	template<typename t>
+	t Sum(matrix<t> input)
+	{
+		t result;
+		for (int x = 0; x < input.Data.size(); x++)
+		{
+			for (int y = 0; y < input.Data[x].size(); y++)
+			{
+				result += input.Data[x][y];
+			}
+		}
+		return result;
+	}
 }
